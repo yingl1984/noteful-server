@@ -8,10 +8,10 @@ const jsonParser = express.json();
 
 const noteFormat = note => ({
   id: note.id,
-  note_title: xss(note.note_title),
-  note_content: xss(note.note_content),
-  date_modified: note.date_modified,
-  folder_id: note.folder_id
+  name: xss(note.name),
+  modified: note.modified,
+  folder_id: note.folder_id,
+  content: xss(note.content)  
 });
 
 nRouter.route('/')
@@ -21,8 +21,8 @@ nRouter.route('/')
     .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { note_title, note_content, folder_id } = req.body;
-    const newNoteInfo = { note_title, note_content, folder_id };
+    const { name, content, folder_id } = req.body;
+    const newNoteInfo = { name, content, folder_id };
 
     for (const [key, value] of Object.entries(newNoteInfo)) {
       if (value == null) {
