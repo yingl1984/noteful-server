@@ -11,8 +11,7 @@
     "migrate:test": "set NODE_ENV=test&& npm run migrate",
     "migrate:production": "set SSL=true && set DATABASE_URL=$(heroku config:get DATABASE_URL)&& npm run migrate",
     "predeploy": "npm audit && npm run migrate:production",
-    "deploy": "git push heroku master",
-    "postdeploy": "npm run migrate:production"
+    "deploy": "git push heroku main"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
     "knex": "^0.95.2",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
+    "postgrator": "^4.1.1",
     "xss": "^1.0.8"
   },
   "devDependencies": {
