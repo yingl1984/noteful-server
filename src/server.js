@@ -9,6 +9,6 @@ const app = require('./app.js');
 
 // app.set('db', db);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
